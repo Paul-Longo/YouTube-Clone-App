@@ -13,18 +13,26 @@ class App extends Component {
     this.getComments();
  }
 
- handleSubmit = async () =>{
-
+//  handleSubmit = 
+async getComments() {
+     try{
+        let response = await axios.get('');
+        this.setState({
+            comments: response.data
+        });
+     }
+     catch(except){
+         alert('Invalid Response')
+     }
  }
 
     render() { 
         return ( 
             <div className='container'>
                 <h1>Youtube Clone</h1>
-                <iframe id="ytplayer" type="text/html" width="640" height="360"
-                src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-                frameborder="0">
-                </iframe>
+                <iframe id="player" type="text/html" width="640" height="390"
+                src="http://www.youtube.com/embed/9b4cm45cfJY?enablejsapi=1&origin=http://example.com"
+                frameborder="0"></iframe>
             </div>
          );
     }
