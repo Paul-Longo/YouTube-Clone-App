@@ -37,9 +37,8 @@ async getComments() {
                 <h1>Youtube Clone</h1>
                 {/* Embedded player here (In the embedded player's src URL use the videoId state variable as the video id in the URL) */}
                 <iframe id="player" type="text/html" width="640" height="390"
-                src="http://www.youtube.com/embed/8qvHQIJ4Y3k?enablejsapi=1&origin=http://example.com"
+                src="http://www.youtube.com/embed/BNqeVsHyGKA?enablejsapi=1&origin=http://example.com"
                 frameborder="0"></iframe>
-                {/* <div id="root"></div> */}
             </div>
           );
     }
