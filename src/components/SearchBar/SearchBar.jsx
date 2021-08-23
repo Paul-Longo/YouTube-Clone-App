@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { Component } from 'react';
+import './SearchBar.css';
 
 class SearchBar extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class SearchBar extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.handleSearch(this.state.searchTerm)
+        this.props.filter(this.state.searchTerm)
     }
 
 
@@ -25,7 +25,7 @@ class SearchBar extends Component {
     render() { 
         return ( 
             <div>
-                <form onSubmit={this.handleSubmit} className='Search' >
+                <form onSubmit={this.handleSubmit} className='search' >
                     <input name='searchBar' type="text" placeholder="Search" onChange={(event) => this.handleChange(event)} />
                     <button type="submit">Let's Go</button>
                 </form>
