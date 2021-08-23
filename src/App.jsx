@@ -19,14 +19,14 @@ class App extends Component {
     }
 
     componentDidMount(){
-    this.getVideo();
+    this.getVideos();
  }
 // create a function here that calls your YouTube API endpoint using axios.get request
 // Take the response you get back from the API call and find the first video id then update your state video id variable
 
-async getVideo() {
+async getVideos(searchTerm) {
      try{
-        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=Incubuspardonme&key=${key}&part=snippet`);
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${key}&part=snippet`); //change "q" field to input whatever is searched
         let relatedVideos = response.data.items
         let videos = []
         for(let i = 0; i < relatedVideos.length; i++) {
@@ -53,12 +53,12 @@ handleSearch = async (searchTerm) =>{
             <div className='container'>
                 <h1>YouToob</h1>
                 <VideoPlayer />
-                <SearchBar filter={this.handleSearch} />
+                <SearchBar searchTerm={this.getVideos} />
                 {/* Embedded player here (In the embedded player's src URL use the videoId state variable as the video id in the URL) */}
                 <RelatedVideos videos={this.state.videoResults} />
                 
             </div>
-          );
+        );
     }
 }
  
