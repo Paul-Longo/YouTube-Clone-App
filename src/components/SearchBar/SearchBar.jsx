@@ -5,20 +5,21 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searhTerm: ""
+            searchPhrase: "",
         }
     }    
     
     handleChange =(event) => {
         this.setState({
-            searchTerm: event.target.value
+            searchPhrase: event.target.value
         });
     }
     
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.filter(this.state.searchTerm)
-    }
+        this.props.searchTerm(this.state.searchPhrase)
+    
+    };
 
 
 
@@ -26,7 +27,7 @@ class SearchBar extends Component {
         return ( 
             <div>
                 <form onSubmit={this.handleSubmit} className='search' >
-                    <input name='searchBar' type="text" placeholder="Search" onChange={(event) => this.handleChange(event)} />
+                    <input name='searchBar' type="text" placeholder="Search" onChange= {this.handleChange} />
                     <button type="submit">Let's Go</button>
                 </form>
             </div>
