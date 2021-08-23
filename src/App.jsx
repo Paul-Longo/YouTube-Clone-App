@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import SearchBar from './SearchBar/SearchBar';
+import SearchBar from './components/SearchBar/SearchBar';
+import RelatedVideos from './components/RelatedVideos/RelatedVideos';
 
 
 
@@ -9,8 +10,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // videoId ='BNqeVsHyGKA',
-            // relatedVideos: []
+            videoId : [],
+            relatedVideos: [],
+            searchTerm: " ",
 
             // create a state variable for the current video id being watched 
             // (initialize this to a videod id of your choice)
@@ -25,25 +27,37 @@ class App extends Component {
 
 async getComments() {
      try{
-        let response = await axios.get('');
+        let response = await axios.get(''); // add to .get() remove empty string
         this.setState({
             comments: response.data
-        });
+        }); 
+        this.setState({getComments: videos})
      }
      catch(except){
-         alert('Invalid Response')
+         console.log(except)
      }
+    
  }
+
+handleSearch = async (searchTerm) =>{
+    const response = await 
+    this.setState({
+        searchTerm: searchTerm,
+        view: 'search',
+    })
+    console.log(response)
+} 
 
     render() { 
         return ( 
             <div className='container'>
                 <h1>YouToob</h1>
-                <SearchBar />
+                <SearchBar filter={this.handleSearch} />
                 {/* Embedded player here (In the embedded player's src URL use the videoId state variable as the video id in the URL) */}
                 <iframe id="player" type="text/html" width="640" height="390"
-                src="http://www.youtube.com/embed/BNqeVsHyGKA?enablejsapi=1&origin=http://example.com"
+                src="http://www.youtube.com/embed/2S24-y0Ij3Y?enablejsapi=1&origin=http://example.com"
                 frameborder="0"></iframe>
+                <RelatedVideos videos={this.state.getComments} />
                 
             </div>
           );
