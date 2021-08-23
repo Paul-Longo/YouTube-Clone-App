@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import RelatedVideos from './components/RelatedVideos/RelatedVideos';
+import key from './components/apikey';
 
 
 
@@ -25,7 +26,7 @@ class App extends Component {
 
 async getVideo() {
      try{
-        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=Incubuspardonme&key=${Key}&part=snippet`);
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=Incubuspardonme&key=${key}&part=snippet`);
         let relatedVideos = response.data.items
         let videos = []
         for(let i = 0; i < relatedVideos.length; i++) {
