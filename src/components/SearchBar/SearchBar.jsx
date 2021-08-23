@@ -36,3 +36,7 @@ class SearchBar extends Component {
  
 export default SearchBar;
 
+//post man used for testing only
+//use dot notation to get response.data.""
+//map function only works on arrays so get to array or convert it
+// so itterate over it by using a for loop.
