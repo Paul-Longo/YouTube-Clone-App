@@ -7,7 +7,10 @@ import React, { Component } from 'react';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {  
+        this.state = {
+            // videoId ='BNqeVsHyGKA',
+            // relatedVideos: []
+
             // create a state variable for the current video id being watched 
             // (initialize this to a videod id of your choice)
         }
@@ -34,7 +37,7 @@ async getComments() {
     render() { 
         return ( 
             <div className='container'>
-                <h1>Youtube Clone</h1>
+                <h1>YouToob</h1>
                 {/* Embedded player here (In the embedded player's src URL use the videoId state variable as the video id in the URL) */}
                 <iframe id="player" type="text/html" width="640" height="390"
                 src="http://www.youtube.com/embed/BNqeVsHyGKA?enablejsapi=1&origin=http://example.com"
