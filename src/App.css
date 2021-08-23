@@ -1,0 +1,13 @@
+.app{
+    background-color: aquamarine;
+}
+.container {
+    margin-left: 15%;
+    text-align: center;
+    text-decoration-style: wavy;
+}
+
+.container__iframe{
+    align-items: center;
+    margin-top: 15%;
+}
