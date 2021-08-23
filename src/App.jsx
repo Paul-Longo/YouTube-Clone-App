@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
+import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import RelatedVideos from './components/RelatedVideos/RelatedVideos';
 
 
@@ -10,10 +11,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            videoId : [],
-            relatedVideos: [],
-            searchTerm: " ",
-
+            videoResults : [],
             // create a state variable for the current video id being watched 
             // (initialize this to a videod id of your choice)
         }
@@ -27,21 +25,18 @@ class App extends Component {
 
 async getVideo() {
      try{
-<<<<<<< HEAD
-        let response = await axios.get(''); // add to .get() remove empty string
-=======
-        let response = await axios.get("https:ww.googleapis.com/youtube/v3/search?q=Incubuspardonme&key=AIzaSyAr75bgsZcB9ajYgOvq0qBjZKr0yBMAAyk");
->>>>>>> bc6aee16079abd71bba2493a8ec10d55e65361ff
-        this.setState({
-            comments: response.data
-        }); 
-        this.setState({getComments: videos})
-     }
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=Incubuspardonme&key=${Key}&part=snippet`);
+        let relatedVideos = response.data.items
+        let videos = []
+        for(let i = 0; i < relatedVideos.length; i++) {
+            videos.push(relatedVideos[i].id.videoId)
+        }
+        this.setState({videoResults: videos})
+    }
      catch(except){
          console.log(except)
-     }
-    
- }
+    }
+}
 
 handleSearch = async (searchTerm) =>{
     const response = await 
@@ -56,12 +51,10 @@ handleSearch = async (searchTerm) =>{
         return ( 
             <div className='container'>
                 <h1>YouToob</h1>
+                <VideoPlayer />
                 <SearchBar filter={this.handleSearch} />
                 {/* Embedded player here (In the embedded player's src URL use the videoId state variable as the video id in the URL) */}
-                <iframe id="player" type="text/html" width="640" height="390"
-                src="http://www.youtube.com/embed/2S24-y0Ij3Y?enablejsapi=1&origin=http://example.com"
-                frameborder="0"></iframe>
-                <RelatedVideos videos={this.state.getComments} />
+                <RelatedVideos videos={this.state.videoResults} />
                 
             </div>
           );
