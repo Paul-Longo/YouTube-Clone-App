@@ -20,14 +20,18 @@ class App extends Component {
     }
 
     componentDidMount(){
-    this.getComments();
+    this.getVideo();
  }
 // create a function here that calls your YouTube API endpoint using axios.get request
 // Take the response you get back from the API call and find the first video id then update your state video id variable
 
-async getComments() {
+async getVideo() {
      try{
+<<<<<<< HEAD
         let response = await axios.get(''); // add to .get() remove empty string
+=======
+        let response = await axios.get("https:ww.googleapis.com/youtube/v3/search?q=Incubuspardonme&key=AIzaSyAr75bgsZcB9ajYgOvq0qBjZKr0yBMAAyk");
+>>>>>>> bc6aee16079abd71bba2493a8ec10d55e65361ff
         this.setState({
             comments: response.data
         }); 
