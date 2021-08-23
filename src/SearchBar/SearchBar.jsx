@@ -17,7 +17,7 @@ class SearchBar extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.handleSearch(this.state.searchTerm)
+        this.props.handleSubmit(this.state.searchTerm)
     }
 
 
@@ -26,7 +26,7 @@ class SearchBar extends Component {
         return ( 
             <div>
                 <form onSubmit={this.handleSubmit} className='Search' >
-                    <input name='searchBar' type="text" placeholder="Search" onChange={(event) => this.handleChange(event)} />
+                    <input name='searchBar' type="text" placeholder="Search" onChange={this.handleChange} searchTerm={this.state.term} />
                     <button type="submit">Let's Go</button>
                 </form>
             </div>
