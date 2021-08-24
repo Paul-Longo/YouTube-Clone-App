@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
 
+
 class SearchBar extends Component {
     constructor(props) {
         super(props);
@@ -10,16 +11,18 @@ class SearchBar extends Component {
     }    
     
     handleChange =(event) => {
+        console.log (event.target.value)
         this.setState({
+            
             searchPhrase: event.target.value
         });
-        // console.log this.state.searchPhrase
+       
     }
     
     handleSubmit = (event) => {
         event.preventDefault();
-        //console.log() this.state.searchPhrase
-        this.props.searchTerm(this.state.searchPhrase)
+        this.props.getVideosFunction(this.state.searchPhrase);
+       
     };
 
 
@@ -27,7 +30,7 @@ class SearchBar extends Component {
     render() { 
         return ( 
             <div>
-                <form onSubmit={this.handleSubmit} className='search' >
+                <form onSubmit= {(event) => this.handleSubmit(event)} >
                     <input name='searchBar' type="text" value={this.state.searchPhrase} onChange={this.handleChange} />
                     <button type="submit">Let's Go</button>
                 </form>
