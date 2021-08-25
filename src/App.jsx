@@ -4,6 +4,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import key from './components/apikey';
 import CommentBox from './components/CommentsBox/CommentsBox';
+import RelatedVideos from './components/RelatedVideos/RelatedVideos';
 
 
 
@@ -12,7 +13,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            videoResults : []
+            videoResults : [],
+            comments: [],
+            searchTerm: "",
             // create a state variable for the current video id being watched 
             // (initialize this to a videod id of your choice)
         }
@@ -44,8 +47,9 @@ getVideos = async (searchTerm) => {
         return ( 
             <div className='container '>
                 <h1>YouToob</h1>
-                <VideoPlayer />
                 <SearchBar getVideosFunction={this.getVideos} />
+                <VideoPlayer />
+                <RelatedVideos videos={this.state.videoResults}/>
                 <CommentBox />
                {/* Embedded player here (In th<RelatedVideos videos={this.state.videoResults} />e embedded player's src URL use the videoId state variable as the video id in the URL) */}
                 {/*  */}
