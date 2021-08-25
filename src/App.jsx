@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
-import RelatedVideos from './components/RelatedVideos/RelatedVideos';
 import key from './components/apikey';
+import CommentBox from './components/CommentsBox/CommentsBox';
 
 
 
@@ -39,7 +39,6 @@ getVideos = async (searchTerm) => {
     }
 }
 
-
     render() { 
         console.log(this.state)
         return ( 
@@ -47,6 +46,7 @@ getVideos = async (searchTerm) => {
                 <h1>YouToob</h1>
                 <VideoPlayer />
                 <SearchBar getVideosFunction={this.getVideos} />
+                <CommentBox />
                {/* Embedded player here (In th<RelatedVideos videos={this.state.videoResults} />e embedded player's src URL use the videoId state variable as the video id in the URL) */}
                 {/*  */}
                 
