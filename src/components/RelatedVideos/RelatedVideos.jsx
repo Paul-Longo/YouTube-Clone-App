@@ -1,39 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class RelatedVideos extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            video_id: "PXzuDXZwZtI"
-        }
-    }
-    
-    render() {
-        return (
-            <div>
-            <ul><iframe title="relatedVideos" id="ytplayer" type="text/html" width="160" height="90"
-            src={`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${this.state.video_Id}&type=video&maxResults=5`}
-            frameborder="0"></iframe></ul>
-            </div>
+
+const RelatedVideos = (props) => {
+    let renderedVideos = props.videos.map(video => {
+        return( 
+        <div key={video.id.videoId} className="related">
+            <iframe 
+                title="videoPlayer" 
+                id="player" 
+                type="text/html" 
+                width="300" 
+                height="300"
+                src={`http://www.youtube.com/embed/${video.id.videoId}?enablejsapi=1&origin=http://example.com`}
+                frameborder="0">
+            </iframe>
+        </div>
         );
-    }
+    });
+    return <div>{renderedVideos}</div>
 }
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             video_id: "PXzuDXZwZtI"
-//         }
-//     }
-    
-//     render() {
-//         return (
-//             <div>
-//             <ul><iframe title="relatedVideos" id="ytplayer" type="text/html" width="160" height="90"
-//             src={`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${this.state.video_Id}&type=video&maxResults=5`}
-//             frameborder="0"></iframe></ul>
-//             </div>
-//         );
-//     }
-// }
 
 export default RelatedVideos;

@@ -28,13 +28,13 @@ getVideos = async (searchTerm) => {
     console.log("You hit me!", searchTerm)
      try{
         let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${key}&part=snippet`); //change "q" field to input whatever is searched
-        let relatedVideos = response.data.item;
-        let videos = response.data.item
-        for(let i = 0; i < relatedVideos.length; i++) {
-            videos.push(relatedVideos[i].id.videoResults)
-        }
+        // let relatedVideos = response.data.item;
+        // let videos = response.data.item
+        // for(let i = 0; i < relatedVideos.length; i++) {
+        //     videos.push(relatedVideos[i].id.videoResults)
+        // }
         this.setState({
-            videoResults: videos})
+            videoResults: response.data.items})
     }
       catch(except){
       console.log('error')
@@ -49,7 +49,7 @@ getVideos = async (searchTerm) => {
                 <h1>YouToob</h1>
                 <SearchBar getVideosFunction={this.getVideos} />
                 <VideoPlayer />
-                <RelatedVideos videos={this.state.videoResults}/>
+                {this.state.videoResults && <RelatedVideos videos={this.state.videoResults}/>}
                 <CommentBox />
                {/* Embedded player here (In th<RelatedVideos videos={this.state.videoResults} />e embedded player's src URL use the videoId state variable as the video id in the URL) */}
                 {/*  */}
